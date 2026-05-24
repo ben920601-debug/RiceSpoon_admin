@@ -1,0 +1,172 @@
+/* style.css */
+/* ==================== 🌾 Rice Cooker Tech Studio 專屬：日系木質米飯主題 ==================== */
+:root {
+    --primary: #e11d48;        /* 微醺山茶紅 */
+    --primary-hover: #be123c;
+    --bg-main: #fbf9f4;        /* 溫暖的越光米色 */
+    --surface: #ffffff;
+    --text: #292524;           /* 深石墨色（無印良品質感） */
+    --text-muted: #78716c;     /* 溫和的木質灰 */
+    --border: #eddcd2;         /* 麥芽糖輕柔邊框線 */
+    --danger: #e11d48;
+    --sidebar-bg: #443e38;     /* 日系深胡桃木色 */
+    --sidebar-active: #2e2a25; /* 側邊欄選中時的深陰影木色 */
+    --login-bg: #2e2a25;
+    
+    /* 商用高級感細節設定 */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;         
+    --shadow-sm: 0 2px 8px rgba(68, 62, 56, 0.04);
+    --shadow-md: 0 8px 20px rgba(68, 62, 56, 0.08);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; 
+    touch-action: manipulation; 
+}
+
+body { 
+    background-color: var(--bg-main); 
+    color: var(--text); 
+    display: flex; 
+    height: 100vh; 
+    overflow: hidden; 
+    user-select: none; 
+}
+
+/* ==================== 全螢幕登入畫面 ==================== */
+.login-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, var(--login-bg) 0%, #022c22 100%);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.login-screen.hidden { opacity: 0; visibility: hidden; }
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.login-header i { font-size: 3.5rem; color: var(--primary); margin-bottom: 15px; }
+.login-header h2 { font-size: 1.6rem; color: #111827; margin-bottom: 5px; }
+.login-header p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px; }
+
+.input-group { text-align: left; margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.input-wrapper { position: relative; }
+.input-wrapper i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+.input-wrapper input, .input-wrapper select {
+    width: 100%; padding: 12px 12px 12px 40px;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-size: 1rem; outline: none; transition: border-color 0.2s; background: white;
+}
+.input-wrapper input:focus, .input-wrapper select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+}
+
+.btn-login {
+    background: var(--primary); color: white; border: none; width: 100%; padding: 14px;
+    border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+    transition: background 0.2s, transform 0.1s; margin-top: 10px;
+}
+.btn-login:hover { background: var(--primary-hover); }
+.btn-login:active { transform: scale(0.98); }
+
+.login-error { color: var(--danger); font-size: 0.88rem; margin-top: 10px; display: none; font-weight: 500; }
+
+/* ==================== 左側功能列 Sidebar ==================== */
+.sidebar {
+    width: 240px; background-color: var(--sidebar-bg); color: white;
+    display: flex; flex-direction: column; transition: all 0.3s ease; flex-shrink: 0;
+}
+.sidebar-brand {
+    height: 60px; display: flex; align-items: center; padding: 0 20px;
+    font-size: 1.1rem; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-brand i { margin-right: 10px; font-size: 1.3rem; }
+.sidebar-menu { list-style: none; padding: 15px 0; flex-grow: 1; }
+.sidebar-item a {
+    display: flex; align-items: center; padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.8); text-decoration: none;
+    transition: all 0.2s; border-left: 4px solid transparent; margin-bottom: 4px;
+}
+.sidebar-item a:hover, .sidebar-item.active a { color: white; background-color: var(--sidebar-active); }
+.sidebar-item.active a { border-left-color: var(--primary); }
+.sidebar-item i { margin-right: 12px; width: 20px; text-align: center; font-size: 1.1rem; }
+.sidebar-footer {
+    padding: 15px 20px; font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;
+}
+.btn-logout { background: transparent; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 0.95rem; transition: color 0.2s; }
+.btn-logout:hover { color: var(--danger); }
+
+/* ==================== 主要內容區大框架 ==================== */
+.main-wrapper { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.top-navbar {
+    height: 60px; background-color: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-shrink: 0;
+}
+.user-info { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.page-content { flex-grow: 1; display: flex; overflow: hidden; }
+
+/* ==================== 🗳️ 獨立後台專用共用彈出視窗 (Modal) ==================== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;
+    z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-card {
+    background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 420px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); transform: translateY(-20px); transition: transform 0.2s ease; box-sizing: border-box;
+}
+.modal-overlay.active .modal-card { transform: translateY(0); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+.modal-header h3 { margin: 0; font-size: 1.2rem; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.modal-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); transition: color 0.2s; }
+.modal-close:hover { color: var(--danger); }
+
+.modal-card .input-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.modal-card .input-group input, .modal-card .input-group select {
+    width: 100%; padding: 11px; border: 1px solid var(--border); border-radius: 6px;
+    box-sizing: border-box; font-size: 0.95rem; outline: none; background: #fffdfa; color: var(--text); transition: border-color 0.2s;
+}
+.modal-card .input-group input:focus, .modal-card .input-group select:focus { border-color: var(--primary); }
+.modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 15px; }
+
+.btn-cancel { background: #f3f4f6; color: #4b5563; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.95rem; transition: background 0.2s; }
+.btn-cancel:hover { background: #e5e7eb; }
+.btn-save { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.95rem; transition: background 0.2s; box-shadow: 0 2px 4px rgba(225, 29, 72, 0.2); }
+.btn-save:hover { background: var(--primary-hover); }
+.btn-save:disabled { background: #9ca3af; cursor: not-allowed; }
+
+/* ==================== 📢 全域頂部大器跑馬燈公告 ==================== */
+.marquee-wrapper {
+    flex: 1; max-width: 500px; height: 100%; background-color: transparent;
+    border: none; border-right: 1px solid var(--border); padding: 0 20px;
+    margin-right: 15px; display: flex; align-items: center; overflow: hidden; position: relative;
+}
+.marquee-content {
+    display: inline-block; white-space: nowrap; position: absolute; will-change: transform;
+    animation: marquee-slide 18s linear infinite; font-size: 0.92rem; font-weight: 500; color: var(--text-muted);
+}
+.marquee-wrapper:hover .marquee-content { animation-play-state: paused; color: var(--primary); }
+@keyframes marquee-slide { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* 響應式微調 */
+@media (max-width: 768px) {
+    .marquee-wrapper { display: none !important; }
+}
