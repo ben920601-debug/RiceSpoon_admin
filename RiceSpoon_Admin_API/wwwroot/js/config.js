@@ -1,0 +1,1 @@
+const API_BASE_URL = "/api/admin"; // ⚠️ C# 後端 API 基礎 URL
