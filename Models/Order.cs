@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RiceSpoon_Admin.Models
+namespace RiceSpoon_Admin_API.Models
 {
     [Table("Orders")] // 確保對齊資料庫的表名
     public class Order
